@@ -19,6 +19,13 @@ namespace Data.DataBase
                 this.OpenConnection();
                 SQLiteCommand comando = new SQLiteCommand("SELECT * FROM carreras", sqliteConn);
                 SQLiteDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Carrera car = new Carrera();
+                    car.IdCarrera = (int)reader["idCarrera"];
+                    car.SiglaCarrera = (string)reader["siglaCarrera"];
+                    car.DescCarrera = (string)reader["descripcion"];
+                }
             }
             catch(SQLiteException ex)
             {
