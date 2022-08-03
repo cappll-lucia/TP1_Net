@@ -29,7 +29,7 @@ namespace UI.Desktop
 
         public AlumnosDesktop(int legajo, ModoForm modo) : this()
         {
-            /*
+            
             _Modo = modo;
             if (_Modo != ModoForm.alta)
             {
@@ -57,42 +57,19 @@ namespace UI.Desktop
             {
                 this.btnAceptar.Text = "Aceptar";
             }
-            */
+            
         }
 
-/*
 
         public override void MapearDeDatos()
         {
             base.MapearDeDatos();
-            this.txtLegajo = this._AlumnoActual.Legajo.ToString();
-            this.txtApellido = this._AlumnoActual.Apellido;
-            this.txtNombre = this._AlumnoActual.Nombre;
-            if (this._AlumnoActual.IdCarrera == "IC")
-            {
-                this.cbCarrera.SelectedIndex = 1;
+            this.txtLegajo.Text = this._AlumnoActual.Legajo.ToString();
+            this.txtApellido.Text = this._AlumnoActual.Apellido;
+            this.txtNombre.Text = this._AlumnoActual.Nombre;
 
-            }
-            else if (this._AlumnoActual.IdCarrera == "IE")
-            {
-                this.cbCarrera.SelectedIndex = 2;
-
-            }
-            else if (this._AlumnoActual.IdCarrera == "IM")
-            {
-                this.cbCarrera.SelectedIndex = 3;
-
-            }
-            else if (this._AlumnoActual.IdCarrera == "IQ")
-            {
-                this.cbCarrera.SelectedIndex = 4;
-
-            }
-            else if (this._AlumnoActual.IdCarrera == "ISI")
-            {
-                this.cbCarrera.SelectedIndex = 5;
-
-            }
+            //ComboBox de Carrera FALTA
+            
 
             if (this._AlumnoActual.Estado == "Activo")
             {
@@ -102,7 +79,7 @@ namespace UI.Desktop
             {
                 this.cbEstado.SelectedIndex = 2;
             }
-            else if (this._AlumnoActual.Estado == "Egresado")
+            else if (this._AlumnoActual.Estado == "Graduado")
             {
                 this.cbEstado.SelectedIndex = 3;
             }
@@ -118,7 +95,7 @@ namespace UI.Desktop
 
             if (_Modo == ModoForm.modificacion || _Modo == ModoForm.alta)
             {
-                _AlumnoActual.Legajo = this.txtLegajo.Text;
+                _AlumnoActual.Legajo = int.Parse(this.txtLegajo.Text);
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
@@ -160,21 +137,6 @@ namespace UI.Desktop
             al.Save(_AlumnoActual);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtLegajo_Enter(object sender, EventArgs e)
         {
             TextBox txtB = (TextBox)sender;
@@ -200,7 +162,7 @@ namespace UI.Desktop
             cbEstado.SelectedIndex = 0;
             cbCarrera.SelectedIndex = 0;
         }
-        */
+        
 
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {

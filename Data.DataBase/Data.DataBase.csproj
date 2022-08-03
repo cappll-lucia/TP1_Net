@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Adapter.cs" />
     <Compile Include="AlumnoAdapter.cs" />
+    <Compile Include="CarreraAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
