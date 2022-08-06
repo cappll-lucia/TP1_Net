@@ -14,6 +14,7 @@ namespace UI.Desktop
 {
     public partial class AlumnosDesktop :ApplicationForm
     {
+
         public Alumno _AlumnoActual;
         public ModoForm _Modo;
 
@@ -162,13 +163,13 @@ namespace UI.Desktop
             cbEstado.SelectedIndex = 0;
             cbCarrera.SelectedIndex = 0;
         }
-        
 
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
-           // this.cbEstado.AllowDrop = false;
-
+            CarrerasLogic carreralg = new CarrerasLogic();
+            cbCarrera.DataSource = carreralg.GetAll();
+            cbCarrera.DisplayMember = "_DescCarrera";
+            cbCarrera.ValueMember = "_IdCarrera";
         }
-
     }
 }

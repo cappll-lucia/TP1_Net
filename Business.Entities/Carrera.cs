@@ -9,13 +9,13 @@ namespace Business.Entities
     public class Carrera : Entidades
     {
         private int _IdCarrera;
-        private String _SiglaCarrera;
+        private string _SiglaCarrera;
         private string _DescCarrera;
 
         public int IdCarrera
         {
             get { return _IdCarrera; }
-            set { value = _IdCarrera; }
+            set { _IdCarrera = value; }
         }
         public string SiglaCarrera
         {

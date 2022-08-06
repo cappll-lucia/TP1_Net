@@ -10,7 +10,23 @@ namespace Business.Logic
 {
     public class CarrerasLogic
     {
+        public CarreraAdapter _CarreraAdapter;
 
+        public CarreraAdapter CarreraAdapter
+        {
+            get { return _CarreraAdapter; }
+            set { _CarreraAdapter = value; }
+        }
+
+        public CarrerasLogic()
+        {
+            CarreraAdapter = new CarreraAdapter(); 
+        }
+
+        public List<Carrera> GetAll()
+        {
+            return CarreraAdapter.GetAll();
+        }
 
     }
 }

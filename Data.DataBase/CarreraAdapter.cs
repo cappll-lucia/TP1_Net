@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 using Business.Entities;
+using System.Windows.Forms;
 
 namespace Data.DataBase
 {
@@ -17,21 +18,25 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                SQLiteCommand comando = new SQLiteCommand("SELECT * FROM carreras", sqliteConn);
+                SQLiteCommand comando = new SQLiteCommand("SELECT IdCarrera, descCarrera, siglaCarrera FROM carreras", sqliteConn);
                 SQLiteDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     Carrera car = new Carrera();
                     car.IdCarrera = (int)reader["idCarrera"];
+                    car.DescCarrera = (string)reader["descCarrera"];
                     car.SiglaCarrera = (string)reader["siglaCarrera"];
-                    car.DescCarrera = (string)reader["descripcion"];
                 }
-            }
-            catch(SQLiteException ex)
+            }catch(SQLiteException ex1)
             {
-                Exception ExcepcionManejada = new Exception("Error con la base de datos", ex);
-                throw ExcepcionManejada;
+                Exception ExcepcionManejada = new Exception("Error con la base de datos", ex1);
+                //MessageBox.Show("Error en la base de datos", "Error");
             }
+            /*catch(Exception ex2)
+            {
+                Exception ExcepcionManejada = new Exception("Error con la base de datos", ex2);
+                MessageBox.Show("Error en la base de datos", "Error");
+            }*/
             finally
             {
                 this.CloseConnection();
