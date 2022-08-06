@@ -168,8 +168,8 @@ namespace UI.Desktop
         {
             CarrerasLogic carreralg = new CarrerasLogic();
             cbCarrera.DataSource = carreralg.GetAll();
-            cbCarrera.DisplayMember = "_DescCarrera";
-            cbCarrera.ValueMember = "_IdCarrera";
+            cbCarrera.DisplayMember = "DescCarrera";
+            cbCarrera.ValueMember = "IdCarrera";
         }
     }
 }
