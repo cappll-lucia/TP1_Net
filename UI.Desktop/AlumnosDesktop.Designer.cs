@@ -106,12 +106,13 @@ namespace UI.Desktop
             // cbCarrera
             // 
             this.cbCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCarrera.FormattingEnabled = true;
             this.cbCarrera.Location = new System.Drawing.Point(3, 94);
             this.cbCarrera.Name = "cbCarrera";
             this.cbCarrera.Size = new System.Drawing.Size(335, 21);
             this.cbCarrera.TabIndex = 4;
-            this.cbCarrera.Text = "Carrera";
+            this.cbCarrera.Tag = "";
             // 
             // txtLegajo
             // 
@@ -150,6 +151,7 @@ namespace UI.Desktop
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 

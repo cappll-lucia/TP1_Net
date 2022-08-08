@@ -67,11 +67,7 @@ namespace UI.Desktop
             base.MapearDeDatos();
             this.txtLegajo.Text = this._AlumnoActual.Legajo.ToString();
             this.txtApellido.Text = this._AlumnoActual.Apellido;
-            this.txtNombre.Text = this._AlumnoActual.Nombre;
-
-            //ComboBox de Carrera FALTA
-            
-
+            this.txtNombre.Text = this._AlumnoActual.Nombre;         
             if (this._AlumnoActual.Estado == "Activo")
             {
                 this.cbEstado.SelectedIndex = 1;
@@ -84,6 +80,9 @@ namespace UI.Desktop
             {
                 this.cbEstado.SelectedIndex = 3;
             }
+
+            //ComboBox de Carrera FALTA
+            this.cbCarrera.SelectedValue = this._AlumnoActual.IdCarrera;
         }
 
         public override void MapearADatos()
@@ -100,7 +99,7 @@ namespace UI.Desktop
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                _AlumnoActual.IdCarrera = this.cbCarrera.SelectedItem.ToString();
+                _AlumnoActual.IdCarrera = int.Parse(this.cbCarrera.SelectedItem.ToString()); // revisar
 
                 if (_Modo == ModoForm.alta)
                 {
@@ -187,10 +186,22 @@ namespace UI.Desktop
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
             CarrerasLogic carreralg = new CarrerasLogic();
-            cbCarrera.DataSource = carreralg.GetAll(); 
+            List<Carrera> listaCarreras = new List<Carrera>();
+            listaCarreras = carreralg.GetAll();
+            var car = new Carrera();
+            car.DescCarrera = "Carrera";
+            car.IdCarrera = 0;
+            listaCarreras.Add(car);
+            cbCarrera.DataSource = listaCarreras;
             cbCarrera.DisplayMember = "DescCarrera";
             cbCarrera.ValueMember = "IdCarrera";
+
+            cbCarrera.SelectedIndex = listaCarreras.Count()-1; //revisar
         }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

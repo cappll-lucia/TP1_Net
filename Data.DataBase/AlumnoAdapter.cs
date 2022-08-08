@@ -17,16 +17,16 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "select * from alumnos";
+                string consulta = "select legajo, apellido, nombre, idCarrera, estado from estudiantes";
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
                 SQLiteDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     Alumno alu = new Alumno();
-                    alu.Legajo = (int)reader["legajo"];
+                    alu.Legajo = reader.GetInt32(0);
                     alu.Apellido = (string)reader["apellido"];
                     alu.Nombre = (string)reader["nombre"];
-                    alu.IdCarrera = (string)reader["idCarrera"];
+                    alu.IdCarrera = reader.GetInt32(3);
                     alu.Estado = (string)reader["estado"];
                     alumnos.Add(alu);
                 }
@@ -36,11 +36,11 @@ namespace Data.DataBase
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
                 throw ExcepcionManejada;
             }
-            catch (Exception Ex2)
+            /*catch (Exception Ex2)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos", Ex2);
                 throw ExcepcionManejada;
-            }
+            }*/
             finally
             {
                 this.CloseConnection();
@@ -54,21 +54,21 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "select * from alumnos where legajo=@leg";
+                string consulta = "select legajo, apellido, nombre, idCarrera, estado from estudiantes where legajo = @leg";
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
-                SQLiteDataReader reader = comando.ExecuteReader();
                 comando.Parameters.Add("@leg", DbType.Int32).Value = leg; //revisar que DBType sea correcto pq no encuentro SQLiteDbType
+                SQLiteDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    alu.Legajo = (int)reader["legajo"];
+                    alu.Legajo = reader.GetInt32(0);
                     alu.Apellido = (string)reader["apellido"];
                     alu.Nombre = (string)reader["nombre"];
-                    alu.IdCarrera = (string)reader["idCarrera"];
+                    alu.IdCarrera = reader.GetInt32(3);
                     alu.Estado = (string)reader["estado"];
                 }
                 reader.Close();
             }
-            catch (SQLiteException Ex1)
+            /*catch (SQLiteException Ex1)
             {
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
                 throw ExcepcionManejada;
@@ -77,7 +77,7 @@ namespace Data.DataBase
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar alumno ", Ex2);
                 throw ExcepcionManejada;
-            }
+            }*/
             finally
             {
                 this.CloseConnection();
@@ -90,7 +90,7 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "delete alumnos where legajo=@leg";
+                string consulta = "delete estudiantes where legajo=@leg";
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
                 SQLiteDataReader reader = comando.ExecuteReader();
                 comando.Parameters.Add("@leg", DbType.Int32).Value = leg; //revisar que DBType sea correcto pq no encuentro SQLiteDbType
@@ -117,7 +117,7 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "insert into alumnos (legajo, apellido, nombre, idCarrera, estado)" +
+                string consulta = "insert into estudiantes (legajo, apellido, nombre, idCarrera, estado)" +
                     "values (@leg, @apell, @nombre, @carrera, @estado)"
                     /*+ "select @@identity"*/;      //agregar cuando el legajo sea generated value
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
@@ -149,7 +149,7 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "update alumnos set nombre = @nombre, apellido = @apellido, idCarrera=@carrera, estado=@estado" +
+                string consulta = "update estudiantes set nombre = @nombre, apellido = @apellido, idCarrera=@carrera, estado=@estado" +
                     "where  legajo=@legajo";
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
                 SQLiteDataReader reader = comando.ExecuteReader();

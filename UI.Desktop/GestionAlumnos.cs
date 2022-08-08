@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
+
 namespace UI.Desktop
 {
     public partial class GestionAlumnos : ApplicationForm
@@ -47,12 +48,13 @@ namespace UI.Desktop
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int legajo = ((Alumno)this.dgvGestionAlumnos.SelectedRows[0].DataBoundItem).Legajo;
+            MessageBox.Show(legajo.ToString());
             if (this.dgvGestionAlumnos.SelectedRows.Count == 1)
             {
                 AlumnosDesktop formAlu = new AlumnosDesktop(legajo, ApplicationForm.ModoForm.baja);
@@ -78,6 +80,11 @@ namespace UI.Desktop
             {
                 MessageBox.Show(this.Text, "Debe seleccionar una fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dgvGestionAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

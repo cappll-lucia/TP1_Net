@@ -115,6 +115,7 @@ namespace UI.Desktop
             this.dgvGestionAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGestionAlumnos.Size = new System.Drawing.Size(794, 390);
             this.dgvGestionAlumnos.TabIndex = 1;
+            this.dgvGestionAlumnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGestionAlumnos_CellContentClick);
             // 
             // btnSalir
             // 
@@ -124,6 +125,7 @@ namespace UI.Desktop
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsGestionAlumnos
             // 
@@ -155,6 +157,7 @@ namespace UI.Desktop
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(23, 22);
             this.btnEditar.Text = "Editar";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -174,24 +177,28 @@ namespace UI.Desktop
             // 
             // Apellido
             // 
+            this.Apellido.DataPropertyName = "Apellido";
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
             // 
             // Nombre
             // 
+            this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             // 
             // Carrera
             // 
+            this.Carrera.DataPropertyName = "IdCarrera";
             this.Carrera.HeaderText = "Carrera";
             this.Carrera.Name = "Carrera";
             this.Carrera.ReadOnly = true;
             // 
             // Estado
             // 
+            this.Estado.DataPropertyName = "State";
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
@@ -203,6 +210,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tcGestionAlumnos);
             this.Name = "GestionAlumnos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionAlumnos";
             this.Load += new System.EventHandler(this.GestionAlumnos_Load);
             this.tcGestionAlumnos.ContentPanel.ResumeLayout(false);
