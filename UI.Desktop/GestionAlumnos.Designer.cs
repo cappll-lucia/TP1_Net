@@ -31,20 +31,25 @@ namespace UI.Desktop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionAlumnos));
             this.tcGestionAlumnos = new System.Windows.Forms.ToolStripContainer();
-            this.tsGestionAlumnos = new System.Windows.Forms.ToolStrip();
             this.tlGestionAlumnos = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.dgvGestionAlumnos = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.tsGestionAlumnos = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Carrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcGestionAlumnos.ContentPanel.SuspendLayout();
             this.tcGestionAlumnos.TopToolStripPanel.SuspendLayout();
             this.tcGestionAlumnos.SuspendLayout();
-            this.tsGestionAlumnos.SuspendLayout();
             this.tlGestionAlumnos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGestionAlumnos)).BeginInit();
+            this.tsGestionAlumnos.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcGestionAlumnos
@@ -64,18 +69,6 @@ namespace UI.Desktop
             // tcGestionAlumnos.TopToolStripPanel
             // 
             this.tcGestionAlumnos.TopToolStripPanel.Controls.Add(this.tsGestionAlumnos);
-            // 
-            // tsGestionAlumnos
-            // 
-            this.tsGestionAlumnos.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsGestionAlumnos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNew,
-            this.btnEditar,
-            this.btnEliminar});
-            this.tsGestionAlumnos.Location = new System.Drawing.Point(3, 0);
-            this.tsGestionAlumnos.Name = "tsGestionAlumnos";
-            this.tsGestionAlumnos.Size = new System.Drawing.Size(81, 25);
-            this.tsGestionAlumnos.TabIndex = 0;
             // 
             // tlGestionAlumnos
             // 
@@ -106,11 +99,20 @@ namespace UI.Desktop
             // 
             // dgvGestionAlumnos
             // 
+            this.dgvGestionAlumnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGestionAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGestionAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.legajo,
+            this.Apellido,
+            this.Nombre,
+            this.Carrera,
+            this.Estado});
             this.tlGestionAlumnos.SetColumnSpan(this.dgvGestionAlumnos, 2);
             this.dgvGestionAlumnos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGestionAlumnos.Location = new System.Drawing.Point(3, 3);
+            this.dgvGestionAlumnos.MultiSelect = false;
             this.dgvGestionAlumnos.Name = "dgvGestionAlumnos";
+            this.dgvGestionAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGestionAlumnos.Size = new System.Drawing.Size(794, 390);
             this.dgvGestionAlumnos.TabIndex = 1;
             // 
@@ -123,6 +125,18 @@ namespace UI.Desktop
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // tsGestionAlumnos
+            // 
+            this.tsGestionAlumnos.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsGestionAlumnos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNew,
+            this.btnEditar,
+            this.btnEliminar});
+            this.tsGestionAlumnos.Location = new System.Drawing.Point(3, 0);
+            this.tsGestionAlumnos.Name = "tsGestionAlumnos";
+            this.tsGestionAlumnos.Size = new System.Drawing.Size(81, 25);
+            this.tsGestionAlumnos.TabIndex = 0;
+            // 
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -131,6 +145,7 @@ namespace UI.Desktop
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(23, 22);
             this.btnNew.Text = "Nuevo";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnEditar
             // 
@@ -150,6 +165,37 @@ namespace UI.Desktop
             this.btnEliminar.Size = new System.Drawing.Size(23, 22);
             this.btnEliminar.Text = "Eliminar";
             // 
+            // legajo
+            // 
+            this.legajo.DataPropertyName = "Legajo";
+            this.legajo.HeaderText = "Legajo";
+            this.legajo.Name = "legajo";
+            this.legajo.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Carrera
+            // 
+            this.Carrera.HeaderText = "Carrera";
+            this.Carrera.Name = "Carrera";
+            this.Carrera.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
             // GestionAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,10 +210,10 @@ namespace UI.Desktop
             this.tcGestionAlumnos.TopToolStripPanel.PerformLayout();
             this.tcGestionAlumnos.ResumeLayout(false);
             this.tcGestionAlumnos.PerformLayout();
-            this.tsGestionAlumnos.ResumeLayout(false);
-            this.tsGestionAlumnos.PerformLayout();
             this.tlGestionAlumnos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGestionAlumnos)).EndInit();
+            this.tsGestionAlumnos.ResumeLayout(false);
+            this.tsGestionAlumnos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -183,5 +229,10 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripButton btnNew;
         private System.Windows.Forms.ToolStripButton btnEditar;
         private System.Windows.Forms.ToolStripButton btnEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn legajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
     }
 }

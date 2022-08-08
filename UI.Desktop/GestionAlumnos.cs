@@ -31,8 +31,7 @@ namespace UI.Desktop
             this.dgvGestionAlumnos.DataSource = al.GetAll();
         }
 
-
-        /*
+        
         private void btnNew_Click(object sender, EventArgs e)
         {
             AlumnosDesktop FormAlu = new AlumnosDesktop(ModoForm.alta);
@@ -53,10 +52,10 @@ namespace UI.Desktop
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int legajo = ((AlumnosDesktop)this.dgvGestionAlumnos.SelectedRows[0].DataBoundItem).Legajo;
+            int legajo = ((Alumno)this.dgvGestionAlumnos.SelectedRows[0].DataBoundItem).Legajo;
             if (this.dgvGestionAlumnos.SelectedRows.Count == 1)
             {
-                AlumnosDesktop formAlu = new AlumnosDesktop(legajo, AppForm.ModoForm.baja);
+                AlumnosDesktop formAlu = new AlumnosDesktop(legajo, ApplicationForm.ModoForm.baja);
                 formAlu.ShowDialog();
                 this.Listar();
             }
@@ -71,7 +70,7 @@ namespace UI.Desktop
             int legajo = ((Alumno)this.dgvGestionAlumnos.SelectedRows[0].DataBoundItem).Legajo;
             if (this.dgvGestionAlumnos.SelectedRows.Count == 1)
             {
-                AlumnosDesktop formAlu = new AlumnosDesktop(legajo, AppForm.ModoForm.modificacion);
+                AlumnosDesktop formAlu = new AlumnosDesktop(legajo, ApplicationForm.ModoForm.modificacion);
                 formAlu.ShowDialog();
                 this.Listar();
             }
@@ -80,6 +79,5 @@ namespace UI.Desktop
                 MessageBox.Show(this.Text, "Debe seleccionar una fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        */
     }
 }

@@ -158,6 +158,26 @@ namespace UI.Desktop
             }
         }
 
+        private void txtBox_Enter(object sender, EventArgs e)
+        {
+            TextBox txtB = (TextBox)sender;
+            if ((txtB.Text) == txtB.Tag.ToString())
+            {
+                txtB.Text = string.Empty;
+                txtB.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtBox_Leave(object sender, EventArgs e)
+        {
+            TextBox txtB = (TextBox)sender;
+            if (string.IsNullOrEmpty(txtB.Text))
+            {
+                txtB.Text = txtB.Tag.ToString();
+                txtB.ForeColor = Color.DimGray;
+            }
+        }
+
         private void pnContolAlumnos_Paint(object sender, PaintEventArgs e)
         {
             cbEstado.SelectedIndex = 0;
@@ -167,9 +187,10 @@ namespace UI.Desktop
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
             CarrerasLogic carreralg = new CarrerasLogic();
-            cbCarrera.DataSource = carreralg.GetAll();
+            cbCarrera.DataSource = carreralg.GetAll(); 
             cbCarrera.DisplayMember = "DescCarrera";
             cbCarrera.ValueMember = "IdCarrera";
         }
+
     }
 }

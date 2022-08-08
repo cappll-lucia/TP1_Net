@@ -87,15 +87,21 @@ namespace UI.Desktop
             this.txtNombre.TabIndex = 0;
             this.txtNombre.Tag = "Nombre";
             this.txtNombre.Text = "Nombre";
+            this.txtNombre.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtNombre.Leave += new System.EventHandler(this.txtLegajo_Leave);
             // 
             // txtApellido
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtApellido.ForeColor = System.Drawing.Color.DimGray;
             this.txtApellido.Location = new System.Drawing.Point(3, 53);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(335, 20);
             this.txtApellido.TabIndex = 1;
+            this.txtApellido.Tag = "Apellido";
             this.txtApellido.Text = "Apellido";
+            this.txtApellido.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtApellido.Leave += new System.EventHandler(this.txtLegajo_Leave);
             // 
             // cbCarrera
             // 
@@ -117,8 +123,8 @@ namespace UI.Desktop
             this.txtLegajo.TabIndex = 2;
             this.txtLegajo.Tag = "Legajo";
             this.txtLegajo.Text = "Legajo";
-            this.txtLegajo.Enter += new System.EventHandler(this.txtLegajo_Enter);
-            this.txtLegajo.Leave += new System.EventHandler(this.txtLegajo_Leave);
+            this.txtLegajo.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtLegajo.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // cbEstado
             // 
