@@ -36,7 +36,6 @@ namespace UI.Desktop
                 AlumnoLogic al = new AlumnoLogic();
                 _AlumnoActual = al.GetOne(legajo);
                 MapearDeDatos();
-                
             }
 
             if (_Modo == ModoForm.alta || _Modo == ModoForm.modificacion)
@@ -51,38 +50,33 @@ namespace UI.Desktop
                 this.txtNombre.ReadOnly = true;
                 this.cbCarrera.AllowDrop = false;
                 this.cbEstado.AllowDrop = false;
-
-
             }
             else if (_Modo == ModoForm.consulta)
             {
                 this.btnAceptar.Text = "Aceptar";
             }
-
-
-            
+   
         }
-
 
         public override void MapearDeDatos()
         {
             base.MapearDeDatos();
             this.txtLegajo.Text = this._AlumnoActual.Legajo.ToString();
             this.txtApellido.Text = this._AlumnoActual.Apellido;
-            this.txtNombre.Text = this._AlumnoActual.Nombre;         
+            this.txtNombre.Text = this._AlumnoActual.Nombre;
+            this.cbCarrera.SelectedValue = this._AlumnoActual.IdCarrera;
             if (this._AlumnoActual.Estado == "Activo")
-            {
-                this.cbEstado.SelectedIndex = 0;
-            }
-            else if (this._AlumnoActual.Estado == "Inactivo")
             {
                 this.cbEstado.SelectedIndex = 1;
             }
-            else if (this._AlumnoActual.Estado == "Graduado")
+            else if (this._AlumnoActual.Estado == "Inactivo")
             {
                 this.cbEstado.SelectedIndex = 2;
             }
-            
+            else if (this._AlumnoActual.Estado == "Graduado")
+            {
+                this.cbEstado.SelectedIndex = 3;
+            }
         }
 
         public override void MapearADatos()
@@ -95,12 +89,10 @@ namespace UI.Desktop
 
             if (_Modo == ModoForm.modificacion || _Modo == ModoForm.alta)
             {
-                //_AlumnoActual.Legajo = int.Parse(this.txtLegajo.Text);
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                //MessageBox.Show("Selected Item Text: " + cbCarrera.SelectedIndex );
-                _AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
+                //_AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
 
                 if (_Modo == ModoForm.alta)
                 {
@@ -185,18 +177,26 @@ namespace UI.Desktop
 
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
-                //revisar
-                CarrerasLogic carreralg = new CarrerasLogic();
-                List<Carrera> listaCarreras = new List<Carrera>();
-                listaCarreras = carreralg.GetAll();
-                var car = new Carrera();
-                car.DescCarrera = "Carrera";
-                car.IdCarrera = 0;
-                listaCarreras.Add(car);
-                cbCarrera.DataSource = listaCarreras;
-                cbCarrera.DisplayMember = "DescCarrera";
-                cbCarrera.ValueMember = "IdCarrera";
+            //revisar
+            CarrerasLogic carreralg = new CarrerasLogic();
+            List<Carrera> listaCarreras = new List<Carrera>();
+            listaCarreras = carreralg.GetAll();
+            var car = new Carrera();
+            car.DescCarrera = "Carrera";
+            car.IdCarrera = 0;
+            listaCarreras.Add(car);
+            cbCarrera.DataSource = listaCarreras;
+            cbCarrera.DisplayMember = "DescCarrera";
+            cbCarrera.ValueMember = "IdCarrera";
+            if(_AlumnoActual == null)
+            {
                 cbCarrera.SelectedIndex = listaCarreras.Count() - 1;
+            }
+            else 
+            {
+                cbCarrera.SelectedIndex = _AlumnoActual.IdCarrera - 1;
+            }
+
                 
         }
 
@@ -207,6 +207,11 @@ namespace UI.Desktop
                 GuardarCambios();
                 Close();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

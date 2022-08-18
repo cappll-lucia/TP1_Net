@@ -134,6 +134,7 @@ namespace UI.Desktop
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
+            "Estado",
             "Activo",
             "Inactivo",
             "Graduado"});
@@ -164,6 +165,7 @@ namespace UI.Desktop
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // AlumnosDesktop
             // 
