@@ -80,33 +80,34 @@ namespace UI.Desktop
             // txtNombre
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.ForeColor = System.Drawing.Color.DimGray;
+            this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.Location = new System.Drawing.Point(3, 11);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(335, 20);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.Tag = "Nombre";
             this.txtNombre.Text = "Nombre";
-            this.txtNombre.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtNombre.Enter += new System.EventHandler(this.txtLegajo_Enter);
             this.txtNombre.Leave += new System.EventHandler(this.txtLegajo_Leave);
             // 
             // txtApellido
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApellido.ForeColor = System.Drawing.Color.DimGray;
+            this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.Location = new System.Drawing.Point(3, 53);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(335, 20);
             this.txtApellido.TabIndex = 1;
             this.txtApellido.Tag = "Apellido";
             this.txtApellido.Text = "Apellido";
-            this.txtApellido.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtApellido.Enter += new System.EventHandler(this.txtLegajo_Enter);
             this.txtApellido.Leave += new System.EventHandler(this.txtLegajo_Leave);
             // 
             // cbCarrera
             // 
             this.cbCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCarrera.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbCarrera.FormattingEnabled = true;
             this.cbCarrera.Location = new System.Drawing.Point(3, 94);
             this.cbCarrera.Name = "cbCarrera";
@@ -117,20 +118,20 @@ namespace UI.Desktop
             // txtLegajo
             // 
             this.txtLegajo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLegajo.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLegajo.ForeColor = System.Drawing.Color.Black;
             this.txtLegajo.Location = new System.Drawing.Point(368, 11);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(324, 20);
             this.txtLegajo.TabIndex = 2;
             this.txtLegajo.Tag = "Legajo";
             this.txtLegajo.Text = "Legajo";
-            this.txtLegajo.Enter += new System.EventHandler(this.txtBox_Enter);
             this.txtLegajo.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // cbEstado
             // 
             this.cbEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
             "Estado",

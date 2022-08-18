@@ -38,7 +38,7 @@ namespace UI.Desktop
                 AlumnoLogic al = new AlumnoLogic();
                 _AlumnoActual = al.GetOne(legajo);
                 MapearDeDatos();
-                this.txtLegajo.ReadOnly = true;
+                this.txtLegajo.Enabled = false;
             }
 
             if (_Modo == ModoForm.alta || _Modo ==ModoForm.modificacion)
@@ -161,7 +161,7 @@ namespace UI.Desktop
             if ((txtB.Text) == txtB.Tag.ToString())
             {
                 txtB.Text = string.Empty;
-                txtB.ForeColor = Color.Black;
+                txtB.ForeColor = Color.DimGray;
             }
         }
 
@@ -197,13 +197,29 @@ namespace UI.Desktop
             if(_AlumnoActual == null)
             {
                 cbCarrera.SelectedIndex = listaCarreras.Count() - 1;
+                cbEstado.SelectedIndex = 0;
+                if ((txtLegajo.Text) == txtLegajo.Tag.ToString())
+                {
+                    txtLegajo.ForeColor = Color.DimGray;
+                }
+                if ((txtApellido.Text) == txtApellido.Tag.ToString())
+                {
+                    txtApellido.ForeColor = Color.DimGray;
+                }
+                if ((txtNombre.Text) == txtNombre.Tag.ToString())
+                {
+                    txtNombre.ForeColor = Color.DimGray;
+                }
+
             }
             else 
             {
                 cbCarrera.SelectedIndex = _AlumnoActual.IdCarrera - 1;
             }
 
-                
+
+
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -219,5 +235,6 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
     }
 }
