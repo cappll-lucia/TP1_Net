@@ -198,7 +198,7 @@ namespace UI.Desktop
             // 
             // Estado
             // 
-            this.Estado.DataPropertyName = "State";
+            this.Estado.DataPropertyName = "Estado";
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;

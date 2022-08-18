@@ -12,6 +12,7 @@ namespace UI.Desktop
 {
     public partial class ApplicationForm : Form
     {
+        public ModoForm _Modo;
         public ApplicationForm()
         {
             InitializeComponent();
@@ -36,6 +37,11 @@ namespace UI.Desktop
         public virtual void GuardarCambios()
         {
 
+        }
+
+        public void Notificar( string mensaje, string titulo, MessageBoxButtons botones, MessageBoxIcon icono)
+        {
+            MessageBox.Show(mensaje, titulo, botones, icono);
         }
 
         public virtual bool Validar()

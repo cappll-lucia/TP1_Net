@@ -16,7 +16,6 @@ namespace UI.Desktop
     {
 
         public Alumno _AlumnoActual;
-        public ModoForm _Modo;
 
         public AlumnosDesktop()
         {
@@ -37,11 +36,12 @@ namespace UI.Desktop
                 AlumnoLogic al = new AlumnoLogic();
                 _AlumnoActual = al.GetOne(legajo);
                 MapearDeDatos();
+                
             }
+
             if (_Modo == ModoForm.alta || _Modo == ModoForm.modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
-
             }
             else if (_Modo == ModoForm.baja)
             {
@@ -58,6 +58,8 @@ namespace UI.Desktop
             {
                 this.btnAceptar.Text = "Aceptar";
             }
+
+
             
         }
 
@@ -70,19 +72,17 @@ namespace UI.Desktop
             this.txtNombre.Text = this._AlumnoActual.Nombre;         
             if (this._AlumnoActual.Estado == "Activo")
             {
-                this.cbEstado.SelectedIndex = 1;
+                this.cbEstado.SelectedIndex = 0;
             }
             else if (this._AlumnoActual.Estado == "Inactivo")
             {
-                this.cbEstado.SelectedIndex = 2;
+                this.cbEstado.SelectedIndex = 1;
             }
             else if (this._AlumnoActual.Estado == "Graduado")
             {
-                this.cbEstado.SelectedIndex = 3;
+                this.cbEstado.SelectedIndex = 2;
             }
-
-            //ComboBox de Carrera FALTA
-            this.cbCarrera.SelectedValue = this._AlumnoActual.IdCarrera;
+            
         }
 
         public override void MapearADatos()
@@ -95,11 +95,12 @@ namespace UI.Desktop
 
             if (_Modo == ModoForm.modificacion || _Modo == ModoForm.alta)
             {
-                _AlumnoActual.Legajo = int.Parse(this.txtLegajo.Text);
+                //_AlumnoActual.Legajo = int.Parse(this.txtLegajo.Text);
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                _AlumnoActual.IdCarrera = int.Parse(this.cbCarrera.SelectedItem.ToString()); // revisar
+                //MessageBox.Show("Selected Item Text: " + cbCarrera.SelectedIndex );
+                _AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
 
                 if (_Modo == ModoForm.alta)
                 {
@@ -131,7 +132,6 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            base.GuardarCambios();
             MapearADatos();
             AlumnoLogic al = new AlumnoLogic();
             al.Save(_AlumnoActual);
@@ -185,23 +185,28 @@ namespace UI.Desktop
 
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
-            CarrerasLogic carreralg = new CarrerasLogic();
-            List<Carrera> listaCarreras = new List<Carrera>();
-            listaCarreras = carreralg.GetAll();
-            var car = new Carrera();
-            car.DescCarrera = "Carrera";
-            car.IdCarrera = 0;
-            listaCarreras.Add(car);
-            cbCarrera.DataSource = listaCarreras;
-            cbCarrera.DisplayMember = "DescCarrera";
-            cbCarrera.ValueMember = "IdCarrera";
-
-            cbCarrera.SelectedIndex = listaCarreras.Count()-1; //revisar
+                //revisar
+                CarrerasLogic carreralg = new CarrerasLogic();
+                List<Carrera> listaCarreras = new List<Carrera>();
+                listaCarreras = carreralg.GetAll();
+                var car = new Carrera();
+                car.DescCarrera = "Carrera";
+                car.IdCarrera = 0;
+                listaCarreras.Add(car);
+                cbCarrera.DataSource = listaCarreras;
+                cbCarrera.DisplayMember = "DescCarrera";
+                cbCarrera.ValueMember = "IdCarrera";
+                cbCarrera.SelectedIndex = listaCarreras.Count() - 1;
+                
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            if (true)
+            {
+                GuardarCambios();
+                Close();
+            }
         }
     }
 }
