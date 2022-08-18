@@ -82,11 +82,6 @@ namespace UI.Desktop
             }
         }
 
-        private void dgvGestionAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnActualizar_Click_1(object sender, EventArgs e)
         {
             Listar();

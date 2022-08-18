@@ -64,7 +64,7 @@ namespace UI.Desktop
             this.txtLegajo.Text = this._AlumnoActual.Legajo.ToString();
             this.txtApellido.Text = this._AlumnoActual.Apellido;
             this.txtNombre.Text = this._AlumnoActual.Nombre;
-            this.cbCarrera.SelectedValue = this._AlumnoActual.IdCarrera;
+            this.cbCarrera.SelectedValue = this._AlumnoActual.Carrera.IdCarrera;
             if (this._AlumnoActual.Estado == "Activo")
             {
                 this.cbEstado.SelectedIndex = 1;
@@ -92,7 +92,8 @@ namespace UI.Desktop
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                //_AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
+                //Aca deberia hacerse nuevamente un get one y guardarlo en carrera?
+                _AlumnoActual.Carrera.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
 
                 if (_Modo == ModoForm.alta)
                 {
@@ -194,7 +195,7 @@ namespace UI.Desktop
             }
             else 
             {
-                cbCarrera.SelectedIndex = _AlumnoActual.IdCarrera - 1;
+                cbCarrera.SelectedIndex = _AlumnoActual.Carrera.IdCarrera - 1;
             }
 
                 

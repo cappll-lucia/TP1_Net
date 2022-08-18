@@ -27,12 +27,16 @@ namespace Data.DataBase
                     alu.Legajo = reader.GetInt32(0);
                     alu.Apellido = (string)reader["apellido"];
                     alu.Nombre = (string)reader["nombre"];
-                    alu.IdCarrera = reader.GetInt32(3);
                     alu.Estado = (string)reader["estado"];
+
+                    CarreraAdapter ca = new CarreraAdapter(); //preguntar si esta bien
+                    alu.Carrera = ca.GetOne( reader.GetInt32(3) );
+
+
                     alumnos.Add(alu);
                 }
             }
-            catch (SQLiteException Ex1)
+            /*catch (SQLiteException Ex1)
             {
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
                 MessageBox.Show("Se produjo un error con la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +47,7 @@ namespace Data.DataBase
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos", Ex2);
                 MessageBox.Show("Error en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
-            }
+            }*/
             finally
             {
                 this.CloseConnection();
@@ -66,7 +70,8 @@ namespace Data.DataBase
                     alu.Legajo = reader.GetInt32(0);
                     alu.Apellido = (string)reader["apellido"];
                     alu.Nombre = (string)reader["nombre"];
-                    alu.IdCarrera = reader.GetInt32(3);
+                    CarreraAdapter ca = new CarreraAdapter(); //preguntar si esta bien
+                    alu.Carrera = ca.GetOne(reader.GetInt32(3));
                     alu.Estado = (string)reader["estado"];
                 }
                 reader.Close();
@@ -128,7 +133,7 @@ namespace Data.DataBase
                 SQLiteCommand comandoSave = new SQLiteCommand("insert into estudiantes (apellido, nombre, idCarrera, estado)" + "values ( @apell, @nombre, @carrera, @estado)" , sqliteConn);
                 comandoSave.Parameters.Add("@apell", DbType.String).Value = alu.Apellido;
                 comandoSave.Parameters.Add("@nombre", DbType.String).Value = alu.Nombre;
-                comandoSave.Parameters.Add("@carrera", DbType.String).Value = alu.IdCarrera;
+                comandoSave.Parameters.Add("@carrera", DbType.String).Value = alu.Carrera.IdCarrera;
                 comandoSave.Parameters.Add("@estado", DbType.String).Value = alu.Estado;
                 comandoSave.ExecuteNonQuery(); 
                 //alu.Legajo = Decimal.ToInt32((decimal)comandoSave.ExecuteScalar()); // tira error
@@ -167,7 +172,7 @@ namespace Data.DataBase
                 //revisar que DBType sea correcto pq no encuentro SQLiteDbType
                 comando.Parameters.Add("@apell", DbType.String).Value = alu.Apellido;
                 comando.Parameters.Add("@nombre", DbType.String).Value = alu.Nombre;
-                comando.Parameters.Add("@carrera", DbType.String).Value = alu.IdCarrera;
+                comando.Parameters.Add("@carrera", DbType.String).Value = alu.Carrera.IdCarrera;
                 comando.Parameters.Add("@estado", DbType.String).Value = alu.Estado;
                 comando.Parameters.Add("@legajo", DbType.Int32).Value = alu.Legajo;
                 comando.ExecuteNonQuery();

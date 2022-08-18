@@ -11,13 +11,13 @@ namespace Business.Entities
         private int _Legajo;
         private string _Nombre;
         private string _Apellido;
-        private int _IdCarrera;
+        private Carrera _Carrera;
         private string _Estado;
 
         public int Legajo { get => _Legajo; set => _Legajo = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Apellido { get => _Apellido; set => _Apellido = value; }
-        public int IdCarrera { get => _IdCarrera; set => _IdCarrera = value; }
+        public Carrera Carrera { get => _Carrera; set => _Carrera = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
 
 
