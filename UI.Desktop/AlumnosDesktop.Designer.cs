@@ -120,7 +120,6 @@ namespace UI.Desktop
             this.txtLegajo.ForeColor = System.Drawing.Color.DimGray;
             this.txtLegajo.Location = new System.Drawing.Point(368, 11);
             this.txtLegajo.Name = "txtLegajo";
-            this.txtLegajo.ReadOnly = true;
             this.txtLegajo.Size = new System.Drawing.Size(324, 20);
             this.txtLegajo.TabIndex = 2;
             this.txtLegajo.Tag = "Legajo";

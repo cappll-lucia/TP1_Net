@@ -54,7 +54,6 @@ namespace UI.Desktop
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int legajo = ((Alumno)this.dgvGestionAlumnos.SelectedRows[0].DataBoundItem).Legajo;
-            MessageBox.Show(legajo.ToString());
             if (this.dgvGestionAlumnos.SelectedRows.Count == 1)
             {
                 AlumnosDesktop formAlu = new AlumnosDesktop(legajo, ApplicationForm.ModoForm.baja);
@@ -91,5 +90,6 @@ namespace UI.Desktop
         {
             Listar();
         }
+
     }
 }

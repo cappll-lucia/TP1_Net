@@ -21,11 +21,13 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        
+
         public AlumnosDesktop(ModoForm modo) : this()
         {
 
         }
+
+
 
         public AlumnosDesktop(int legajo, ModoForm modo) : this()
         {
@@ -36,21 +38,25 @@ namespace UI.Desktop
                 AlumnoLogic al = new AlumnoLogic();
                 _AlumnoActual = al.GetOne(legajo);
                 MapearDeDatos();
+                this.txtLegajo.ReadOnly = true;
             }
 
-            if (_Modo == ModoForm.alta || _Modo == ModoForm.modificacion)
+            if (_Modo == ModoForm.alta || _Modo ==ModoForm.modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
             else if (_Modo == ModoForm.baja)
             {
                 this.btnAceptar.Text = "Eliminar";
-                this.txtLegajo.ReadOnly = true;
-                this.txtApellido.ReadOnly = true;
-                this.txtNombre.ReadOnly = true;
-                this.cbCarrera.AllowDrop = false;
-                this.cbEstado.AllowDrop = false;
+                this.txtLegajo.Enabled = false;
+                this.txtApellido.Enabled = false;
+                this.txtNombre.Enabled = false;
+                this.cbCarrera.DropDownStyle = ComboBoxStyle.Simple;
+                this.cbCarrera.Enabled = false;
+                this.cbEstado.DropDownStyle = ComboBoxStyle.Simple;
+                this.cbEstado.Enabled = false;
             }
+
             else if (_Modo == ModoForm.consulta)
             {
                 this.btnAceptar.Text = "Aceptar";
@@ -92,7 +98,7 @@ namespace UI.Desktop
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                //_AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
+                _AlumnoActual.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
 
                 if (_Modo == ModoForm.alta)
                 {

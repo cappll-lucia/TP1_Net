@@ -15,8 +15,8 @@ namespace Data.DataBase
 
         public void OpenConnection()
         {
-            string connectionString = "Data Source = C:/SQLiteStudio/TP1-Net";
-            //string connectionString = "Data Source = C:\\sqlite\\SQLiteStudio\\TP1-Net-T05.db";
+           // string connectionString = "Data Source = C:/SQLiteStudio/TP1-Net";
+            string connectionString = "Data Source = C:\\sqlite\\SQLiteStudio\\TP1-Net-T05.db";
             sqliteConn = new SQLiteConnection(connectionString);
             sqliteConn.Open();
         }
