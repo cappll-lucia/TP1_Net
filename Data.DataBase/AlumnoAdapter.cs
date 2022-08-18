@@ -162,20 +162,20 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "update estudiantes set nombre = @nombre, apellido = @apellido, idCarrera=@carrera, estado=@estado" +
-                    "where  legajo=@legajo";
+                string consulta = "update estudiantes set nombre = @nombre, apellido = @apellido , idCarrera = @carrera , estado = @estado where legajo = @legajo"; //tira error esta sentencia en sqlite
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
                 //revisar que DBType sea correcto pq no encuentro SQLiteDbType
                 comando.Parameters.Add("@apell", DbType.String).Value = alu.Apellido;
                 comando.Parameters.Add("@nombre", DbType.String).Value = alu.Nombre;
                 comando.Parameters.Add("@carrera", DbType.String).Value = alu.IdCarrera;
                 comando.Parameters.Add("@estado", DbType.String).Value = alu.Estado;
+                comando.Parameters.Add("@legajo", DbType.Int32).Value = alu.Legajo;
                 comando.ExecuteNonQuery();
             }
             catch (SQLiteException Ex1)
             {
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
-                throw ExcepcionManejada;
+                MessageBox.Show("Error con la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception Ex2)
             {

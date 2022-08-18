@@ -86,5 +86,10 @@ namespace UI.Desktop
         {
 
         }
+
+        private void btnActualizar_Click_1(object sender, EventArgs e)
+        {
+            Listar();
+        }
     }
 }
