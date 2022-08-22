@@ -33,10 +33,11 @@ namespace Data.DataBase
                     alu.Carrera = ca.GetOne( reader.GetInt32(3) );
 
 
+
                     alumnos.Add(alu);
                 }
             }
-            /*catch (SQLiteException Ex1)
+            catch (SQLiteException Ex1)
             {
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
                 MessageBox.Show("Se produjo un error con la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -47,7 +48,7 @@ namespace Data.DataBase
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos", Ex2);
                 MessageBox.Show("Error en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
-            }*/
+            }
             finally
             {
                 this.CloseConnection();

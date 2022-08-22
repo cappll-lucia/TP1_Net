@@ -11,6 +11,7 @@ namespace Business.Entities
         private int _Legajo;
         private string _Nombre;
         private string _Apellido;
+
         private Carrera _Carrera;
         private string _Estado;
 

@@ -29,5 +29,10 @@ namespace Business.Entities
             set { _DescCarrera = value; }
         }
 
+        public override string ToString()
+        {
+            return DescCarrera;
+        }
+
     }
 }
