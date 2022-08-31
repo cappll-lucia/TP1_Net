@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionAlumnos));
             this.tcGestionAlumnos = new System.Windows.Forms.ToolStripContainer();
             this.tlGestionAlumnos = new System.Windows.Forms.TableLayoutPanel();
@@ -139,7 +140,7 @@ namespace UI.Desktop
             this.btnEliminar});
             this.tsGestionAlumnos.Location = new System.Drawing.Point(3, 0);
             this.tsGestionAlumnos.Name = "tsGestionAlumnos";
-            this.tsGestionAlumnos.Size = new System.Drawing.Size(81, 25);
+            this.tsGestionAlumnos.Size = new System.Drawing.Size(112, 25);
             this.tsGestionAlumnos.TabIndex = 0;
             // 
             // btnNew
@@ -237,7 +238,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripContainer tcGestionAlumnos;
         private System.Windows.Forms.TableLayoutPanel tlGestionAlumnos;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.DataGridView dgvGestionAlumnos;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStrip tsGestionAlumnos;
         private System.Windows.Forms.ToolStripButton btnNew;
@@ -248,5 +248,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridView dgvGestionAlumnos;
     }
 }
