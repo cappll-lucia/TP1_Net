@@ -175,6 +175,7 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.title);
             this.Name = "AlumnosDesktop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alumnos";
             this.Load += new System.EventHandler(this.AlumnosDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

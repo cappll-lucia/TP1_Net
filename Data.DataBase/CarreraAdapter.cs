@@ -62,7 +62,7 @@ namespace Data.DataBase
                     c.DescCarrera = (string)reader["descCarrera"];
                 }
                 reader.Close();
-            }/*
+            }
             catch (SQLiteException Ex1)
             {
                 Exception ExcepcionManejada = new Exception("Error con la base de datos", Ex1);
@@ -74,7 +74,7 @@ namespace Data.DataBase
                 Exception ExcepcionManejada = new Exception("Error al recuperar alumno ", Ex2);
                 MessageBox.Show("Se produjo un error con la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
-            }*/
+            }
             finally
             {
                 this.CloseConnection();

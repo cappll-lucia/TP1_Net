@@ -102,6 +102,7 @@ namespace UI.Desktop
             // 
             this.dgvGestionAlumnos.AllowUserToAddRows = false;
             this.dgvGestionAlumnos.AllowUserToDeleteRows = false;
+            this.dgvGestionAlumnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGestionAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGestionAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.legajo,
@@ -169,6 +170,7 @@ namespace UI.Desktop
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(23, 22);
             this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // legajo
             // 
@@ -176,7 +178,6 @@ namespace UI.Desktop
             this.legajo.HeaderText = "Legajo";
             this.legajo.Name = "legajo";
             this.legajo.ReadOnly = true;
-            this.legajo.Width = 150;
             // 
             // Apellido
             // 
@@ -184,7 +185,6 @@ namespace UI.Desktop
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
-            this.Apellido.Width = 150;
             // 
             // Nombre
             // 
@@ -192,15 +192,15 @@ namespace UI.Desktop
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 151;
             // 
             // Carrera
             // 
+            this.Carrera.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Carrera.DataPropertyName = "Carrera";
             this.Carrera.HeaderText = "Carrera";
             this.Carrera.Name = "Carrera";
             this.Carrera.ReadOnly = true;
-            this.Carrera.Width = 150;
+            this.Carrera.Width = 66;
             // 
             // Estado
             // 
@@ -208,7 +208,6 @@ namespace UI.Desktop
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
-            this.Estado.Width = 150;
             // 
             // GestionAlumnos
             // 

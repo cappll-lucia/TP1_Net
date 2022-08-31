@@ -11,6 +11,16 @@ namespace Business.Entities
         private int _IdCarrera;
         private string _SiglaCarrera;
         private string _DescCarrera;
+        
+        public Carrera(int ID)
+        {
+            IdCarrera = ID;
+        }
+
+        public Carrera()
+        {
+
+        }
 
         public int IdCarrera
         {

@@ -45,11 +45,13 @@ namespace UI.Desktop
             else if (_Modo == ModoForm.baja)
             {
                 this.btnAceptar.Text = "Eliminar";
-                this.txtLegajo.ReadOnly = true;
-                this.txtApellido.ReadOnly = true;
-                this.txtNombre.ReadOnly = true;
-                this.cbCarrera.AllowDrop = false;
-                this.cbEstado.AllowDrop = false;
+                this.txtLegajo.Enabled = false;
+                this.txtApellido.Enabled = false;
+                this.txtNombre.Enabled = false;
+                this.cbCarrera.DropDownStyle = ComboBoxStyle.Simple;
+                this.cbCarrera.Enabled = false;
+                this.cbEstado.DropDownStyle = ComboBoxStyle.Simple;
+                this.cbEstado.Enabled = false;
             }
             else if (_Modo == ModoForm.consulta)
             {
@@ -92,9 +94,8 @@ namespace UI.Desktop
                 _AlumnoActual.Nombre = this.txtNombre.Text;
                 _AlumnoActual.Apellido = this.txtApellido.Text;
                 _AlumnoActual.Estado = this.cbEstado.SelectedItem.ToString();
-                //Aca deberia hacerse nuevamente un get one y guardarlo en carrera?
-                _AlumnoActual.Carrera.IdCarrera = this.cbCarrera.SelectedIndex + 1; // revisar, toma un numero menos, por eso el + 1
-
+                Carrera c = new Carrera(this.cbCarrera.SelectedIndex + 1);
+                _AlumnoActual.Carrera = c;
                 if (_Modo == ModoForm.alta)
                 {
                     _AlumnoActual.State = Entidades.States.New;
@@ -103,23 +104,6 @@ namespace UI.Desktop
                 {
                     _AlumnoActual.State = Entidades.States.Modified;
                 }
-
-
-            }
-
-        }
-
-        public override bool Validar()
-        {
-            base.Validar();
-            if (this.txtNombre.Text != "" && this.txtApellido.Text != "" && this.txtLegajo.Text != "" && this.cbCarrera.SelectedIndex != 0 && this.cbEstado.SelectedIndex != 0)
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show(this.Text, "Ninguno de los campos puede estar vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
             }
         }
 
@@ -178,7 +162,6 @@ namespace UI.Desktop
 
         private void AlumnosDesktop_Load(object sender, EventArgs e)
         {
-            //revisar
             CarrerasLogic carreralg = new CarrerasLogic();
             List<Carrera> listaCarreras = new List<Carrera>();
             listaCarreras = carreralg.GetAll();
@@ -197,16 +180,46 @@ namespace UI.Desktop
             {
                 cbCarrera.SelectedIndex = _AlumnoActual.Carrera.IdCarrera - 1;
             }
-
-                
+            cbEstado.SelectedIndex = 0;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (true)
+            if (Validar())
             {
                 GuardarCambios();
                 Close();
+            }
+        }
+
+        public override bool Validar()
+        {
+            base.Validar();
+            if (this.txtNombre.Text != "" && this.txtApellido.Text != "" && this.txtLegajo.Text != "")
+            {
+                if(cbCarrera.SelectedIndex != 3)
+                {
+                    if (cbEstado.SelectedIndex != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debes elegir un estado", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    } 
+                }
+                else
+                {
+                    MessageBox.Show("Debes elegir una carrera", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+            }
+            else 
+            {
+                MessageBox.Show("Ninguno de los campos puede estar vacío", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
         }
 
