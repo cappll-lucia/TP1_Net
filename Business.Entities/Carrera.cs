@@ -8,6 +8,7 @@ namespace Business.Entities
 {
     public class Carrera : Entidades
     {
+        //prueba
         private int _IdCarrera;
         private string _SiglaCarrera;
         private string _DescCarrera;
