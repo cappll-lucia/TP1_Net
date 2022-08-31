@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionAlumnos));
             this.tcGestionAlumnos = new System.Windows.Forms.ToolStripContainer();
             this.tlGestionAlumnos = new System.Windows.Forms.TableLayoutPanel();
@@ -100,7 +101,12 @@ namespace UI.Desktop
             // 
             // dgvGestionAlumnos
             // 
-            this.dgvGestionAlumnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvGestionAlumnos.AllowUserToAddRows = false;
+            this.dgvGestionAlumnos.AllowUserToDeleteRows = false;
+            this.dgvGestionAlumnos.AllowUserToResizeColumns = false;
+            this.dgvGestionAlumnos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvGestionAlumnos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvGestionAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGestionAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.legajo,
@@ -113,6 +119,7 @@ namespace UI.Desktop
             this.dgvGestionAlumnos.Location = new System.Drawing.Point(3, 3);
             this.dgvGestionAlumnos.MultiSelect = false;
             this.dgvGestionAlumnos.Name = "dgvGestionAlumnos";
+            this.dgvGestionAlumnos.ReadOnly = true;
             this.dgvGestionAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGestionAlumnos.Size = new System.Drawing.Size(794, 390);
             this.dgvGestionAlumnos.TabIndex = 1;
@@ -124,6 +131,7 @@ namespace UI.Desktop
             this.legajo.HeaderText = "Legajo";
             this.legajo.Name = "legajo";
             this.legajo.ReadOnly = true;
+            this.legajo.Width = 150;
             // 
             // Apellido
             // 
@@ -131,6 +139,7 @@ namespace UI.Desktop
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 150;
             // 
             // Nombre
             // 
@@ -138,6 +147,7 @@ namespace UI.Desktop
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 151;
             // 
             // Carrera
             // 
@@ -145,6 +155,7 @@ namespace UI.Desktop
             this.Carrera.HeaderText = "Carrera";
             this.Carrera.Name = "Carrera";
             this.Carrera.ReadOnly = true;
+            this.Carrera.Width = 150;
             // 
             // Estado
             // 
@@ -152,6 +163,7 @@ namespace UI.Desktop
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
+            this.Estado.Width = 150;
             // 
             // btnSalir
             // 
@@ -172,7 +184,7 @@ namespace UI.Desktop
             this.btnEliminar});
             this.tsGestionAlumnos.Location = new System.Drawing.Point(3, 0);
             this.tsGestionAlumnos.Name = "tsGestionAlumnos";
-            this.tsGestionAlumnos.Size = new System.Drawing.Size(81, 25);
+            this.tsGestionAlumnos.Size = new System.Drawing.Size(112, 25);
             this.tsGestionAlumnos.TabIndex = 0;
             // 
             // btnNew
@@ -203,6 +215,7 @@ namespace UI.Desktop
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(23, 22);
             this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // GestionAlumnos
             // 
@@ -232,7 +245,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripContainer tcGestionAlumnos;
         private System.Windows.Forms.TableLayoutPanel tlGestionAlumnos;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.DataGridView dgvGestionAlumnos;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStrip tsGestionAlumnos;
         private System.Windows.Forms.ToolStripButton btnNew;
@@ -243,5 +255,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridView dgvGestionAlumnos;
     }
 }
