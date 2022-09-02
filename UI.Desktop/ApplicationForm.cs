@@ -23,7 +23,7 @@ namespace UI.Desktop
         }
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
-
+                
         }
 
         public virtual void MapearDeDatos()

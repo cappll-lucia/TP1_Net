@@ -195,11 +195,15 @@ namespace UI.Desktop
         public override bool Validar()
         {
             base.Validar();
-            if (this.txtNombre.Text != "" && this.txtApellido.Text != "" && this.txtLegajo.Text != "")
+            if (this._Modo == ModoForm.baja)
+            {
+                return true;
+            }
+            else if (this.txtNombre.Text != this.txtNombre.Tag.ToString() && this.txtApellido.Text != this.txtApellido.Tag.ToString() && this.txtLegajo.Text != this.txtLegajo.Tag.ToString())
             {
                 if(cbCarrera.SelectedIndex != 3)
                 {
-                    if (cbEstado.SelectedIndex != 0)
+                    if (cbEstado.SelectedIndex != 0 )
                     {
                         return true;
                     }
@@ -216,7 +220,7 @@ namespace UI.Desktop
                 }
                 
             }
-            else 
+            else
             {
                 MessageBox.Show("Ninguno de los campos puede estar vacío", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
