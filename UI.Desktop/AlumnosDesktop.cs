@@ -172,15 +172,36 @@ namespace UI.Desktop
             cbCarrera.DataSource = listaCarreras;
             cbCarrera.DisplayMember = "DescCarrera";
             cbCarrera.ValueMember = "IdCarrera";
-            if(_AlumnoActual == null)
+            if (_AlumnoActual == null)
             {
                 cbCarrera.SelectedIndex = listaCarreras.Count() - 1;
+                cbEstado.SelectedIndex = 0;
+
             }
-            else 
+            else
             {
                 cbCarrera.SelectedIndex = _AlumnoActual.Carrera.IdCarrera - 1;
             }
-            cbEstado.SelectedIndex = 0;
+
+            txtApellido.ForeColor = Color.Black;
+            txtLegajo.ForeColor = Color.Black;
+            txtNombre.ForeColor = Color.Black;
+
+            if ((txtLegajo.Text) == txtLegajo.Tag.ToString())
+            {
+                txtLegajo.ForeColor = Color.DimGray;
+            }
+
+            if ((txtApellido.Text) == txtApellido.Tag.ToString())
+            {
+                txtApellido.ForeColor = Color.DimGray;
+            }
+
+            if ((txtNombre.Text) == txtNombre.Tag.ToString())
+            {
+                txtNombre.ForeColor = Color.DimGray;
+            }
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -199,13 +220,28 @@ namespace UI.Desktop
             {
                 return true;
             }
-            else if (this.txtNombre.Text != this.txtNombre.Tag.ToString() && this.txtApellido.Text != this.txtApellido.Tag.ToString() && this.txtLegajo.Text != this.txtLegajo.Tag.ToString())
+            else if (this.txtNombre.Text != this.txtNombre.Tag.ToString() && this.txtApellido.Text != this.txtApellido.Tag.ToString())
             {
                 if(cbCarrera.SelectedIndex != 3)
                 {
                     if (cbEstado.SelectedIndex != 0 )
                     {
-                        return true;
+                        if (this._Modo == ModoForm.modificacion)
+                        {
+                            if(this.txtLegajo.Text != this.txtLegajo.Tag.ToString())
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                        
                     }
                     else
                     {
