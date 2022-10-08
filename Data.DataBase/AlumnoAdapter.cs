@@ -28,11 +28,9 @@ namespace Data.DataBase
                     alu.Apellido = (string)reader["apellido"];
                     alu.Nombre = (string)reader["nombre"];
                     alu.Estado = (string)reader["estado"];
+
                     CarreraAdapter ca = new CarreraAdapter();
                     alu.Carrera = ca.GetOne( reader.GetInt32(3) );
-
-
-
                     alumnos.Add(alu);
                 }
             }
@@ -102,7 +100,7 @@ namespace Data.DataBase
                 this.OpenConnection(); 
                 string consulta = "delete from alumnos where legajo = @leg";
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
-                comando.Parameters.Add("@leg", DbType.Int32).Value = leg; //revisar que DBType sea correcto pq no encuentro SQLiteDbType
+                comando.Parameters.Add("@leg", DbType.Int32).Value = leg; 
                 comando.ExecuteNonQuery();
             }
             catch (SQLiteException Ex1)
@@ -160,7 +158,7 @@ namespace Data.DataBase
             try
             {
                 this.OpenConnection();
-                string consulta = "update alumnos set nombre = @nombre, apellido = @apellido , idCarrera = @carrera , estado = @estado where legajo = @legajo"; //tira error esta sentencia en sqlite
+                string consulta = "update alumnos set nombre = @nombre, apellido = @apellido , idCarrera = @carrera , estado = @estado where legajo = @legajo"; 
                 SQLiteCommand comando = new SQLiteCommand(consulta, sqliteConn);
                 comando.Parameters.Add("@nombre", DbType.String).Value = alu.Nombre;
                 comando.Parameters.Add("@apellido", DbType.String).Value = alu.Apellido;
